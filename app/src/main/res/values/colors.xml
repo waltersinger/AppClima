@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#1b99d8</color>
+    <color name="background_viewpager">#e7576197</color>
+
+    <color name="color_text_view">#FFF176</color>
+    <color name="color_background_cardview">#c8fff9c4</color>
+</resources>

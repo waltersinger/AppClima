@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AppClima</string>
+    <string name="hint_tvlocation">Enter Location</string>
+</resources>

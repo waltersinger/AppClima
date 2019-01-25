@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/forecastCardView"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_centerVertical="true"
+        app:cardElevation="15dp"
+        app:cardCornerRadius="8dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        app:cardBackgroundColor="@color/color_background_cardview">
+        <!--app:cardBackgroundColor="@android:color/transparent"-->
+
+
+        <RelativeLayout
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/forecastImageId"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@android:drawable/btn_star"
+                android:layout_below="@id/forecastDateTextv"/>
+
+
+            <!--<TextView-->
+                <!--android:id="@+id/forecastTempTextv"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Temp"-->
+                <!--android:layout_below="@id/forecastImageId"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:layout_marginTop="5dp"-->
+                <!--android:textSize="18sp"/>-->
+
+            <TextView
+                android:id="@+id/forecastDateTextv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lunes 20 de enero de 2019"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/forecastHighTextv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="High"
+                android:layout_below="@id/forecastDescriptionTextv"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                android:drawableLeft="@android:drawable/arrow_up_float"/>
+
+            <TextView
+                android:id="@+id/forecastLowTextv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Low"
+                android:layout_below="@id/forecastDescriptionTextv"
+                android:layout_toRightOf="@id/forecastHighTextv"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:textSize="18sp"
+                android:drawableLeft="@android:drawable/arrow_down_float"/>
+
+            <TextView
+                android:id="@+id/forecastDescriptionTextv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mostly Cloud"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/forecastDateTextv"
+                android:layout_marginTop="10dp"
+                android:textSize="20sp"/>
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>
