@@ -3,19 +3,24 @@ package com.wsinger.appclima;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.wsinger.appclima.data.ForecastAsyncListResponse;
 import com.wsinger.appclima.data.ForecastData;
 import com.wsinger.appclima.data.ForecastFragmentAdapter;
 import com.wsinger.appclima.model.Forecast;
+import com.wsinger.appclima.utils.Preferences;
 import com.wsinger.appclima.view.ForecastFragment;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.method.KeyListener;
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,26 +28,55 @@ public class MainActivity extends AppCompatActivity {
     ViewPager viewPager;
 
     TextView currentDateText,locationText,currentTempText,currentInformationTextv;
+    EditText currentLocationText;
+    String strLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        viewPager = findViewById(R.id.viewPagerId);
-        adapterViewPager = new ForecastFragmentAdapter(getSupportFragmentManager(), getFragmentList());
-
-        viewPager.setAdapter(adapterViewPager);
 
         currentDateText =findViewById(R.id.currentDateText);
         locationText = findViewById(R.id.locationTextView);
         currentTempText = findViewById(R.id.currentTempTextView);
         currentInformationTextv = findViewById(R.id.current_information_textv);
 
+        currentLocationText = findViewById(R.id.input_location_edit);//es el input
+
+        final Preferences prefs = new Preferences(this);
+        currentLocationText.setText(prefs.getLocation() );
+
+        getWeather(currentLocationText.getText().toString().trim());
+
+        currentLocationText.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
+                if((keyCode == KeyEvent.KEYCODE_ENTER) && (keyEvent.getAction() == KeyEvent.ACTION_DOWN) ){
+
+                    strLocation = currentLocationText.getText().toString().trim();
+                    getWeather(strLocation);
+                    prefs.setLocation(strLocation);
+
+                    return true;
+                }
+                return false;
+            }
+        });
+
     }
 
-    private List<Fragment> getFragmentList(){
+
+    private void getWeather(String l){
+        adapterViewPager = new ForecastFragmentAdapter(getSupportFragmentManager(), getFragmentList(l));
+        viewPager = findViewById(R.id.viewPagerId);
+        viewPager.setAdapter(adapterViewPager);
+
+    }
+
+    private List<Fragment> getFragmentList(String strLocation){
        final List<Fragment> fragmentList = new ArrayList<>();
+       fragmentList.clear();
 
         new ForecastData().getForecastFromApi(new ForecastAsyncListResponse() {
             @Override
@@ -63,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
                 adapterViewPager.notifyDataSetChanged();
             }
-        });
+        },strLocation);
 
         return fragmentList;
 
