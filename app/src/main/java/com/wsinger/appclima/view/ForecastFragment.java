@@ -2,7 +2,6 @@ package com.wsinger.appclima.view;
 
 
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.wsinger.appclima.R;
+import com.wsinger.appclima.controller.AppController;
 import com.wsinger.appclima.model.Forecast;
+import com.wsinger.appclima.utils.TranslationsCode;
 
 
 /**
@@ -43,7 +44,10 @@ public class ForecastFragment extends Fragment {
         forecasttvDate.setText(forecastObj.getForecastDate());
         forecastHighTemp.setText(forecastObj.getForecastHighTemperature());
         forecastLowTemp.setText(forecastObj.getForecastLowTemperature() );
-        forecastDescription.setText(forecastObj.getForecastWeatherDescription());
+
+        TranslationsCode translationsCode = AppController.getInstance().getTrasnlationManager();
+        //forecastDescription.setText(forecastObj.getForecastWeatherDescription());
+        forecastDescription.setText(translationsCode.getSpanish(forecastObj.getForecastCodeWeather()));
 
 
         return forecastViewF;

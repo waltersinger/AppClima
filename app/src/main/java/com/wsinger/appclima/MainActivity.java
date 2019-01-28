@@ -4,11 +4,14 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.squareup.picasso.Picasso;
+import com.wsinger.appclima.controller.AppController;
 import com.wsinger.appclima.data.ForecastAsyncListResponse;
 import com.wsinger.appclima.data.ForecastData;
 import com.wsinger.appclima.data.ForecastFragmentAdapter;
 import com.wsinger.appclima.model.Forecast;
 import com.wsinger.appclima.utils.Preferences;
+import com.wsinger.appclima.utils.TranslationsCode;
 import com.wsinger.appclima.view.ForecastFragment;
 
 import java.util.ArrayList;
@@ -19,6 +22,7 @@ import android.text.method.KeyListener;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,12 +35,15 @@ public class MainActivity extends AppCompatActivity {
     EditText currentLocationText;
     String strLocation;
 
+    ImageView imageCurrWeather;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
 
+        imageCurrWeather = findViewById(R.id.current_image_id);
         currentDateText =findViewById(R.id.currentDateText);
         locationText = findViewById(R.id.locationTextView);
         currentTempText = findViewById(R.id.currentTempTextView);
@@ -75,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private List<Fragment> getFragmentList(String strLocation){
+       final TranslationsCode translationsCode = AppController.getInstance().getTrasnlationManager();
        final List<Fragment> fragmentList = new ArrayList<>();
        fragmentList.clear();
 
@@ -85,7 +93,13 @@ public class MainActivity extends AppCompatActivity {
                 currentDateText.setText(forecastArrayList.get(0).getCurrDate());
                 locationText.setText(forecastArrayList.get(0).getCity()+", "+forecastArrayList.get(0).getRegion());
                 currentTempText.setText(forecastArrayList.get(0).getCurrTemperature()+"º C");
-                currentInformationTextv.setText(forecastArrayList.get(0).getCurrWeatherDescription());
+                //currentInformationTextv.setText(forecastArrayList.get(0).getCurrWeatherDescription());
+
+                currentInformationTextv.setText( translationsCode.getSpanish(forecastArrayList.get(0).getCurrCodeCondition()));
+
+                //Load the image
+                String urlImage = "http://l.yimg.com/a/i/us/we/52/"+forecastArrayList.get(0).getCurrCodeCondition()+".gif";
+                Picasso.get().load(urlImage).into(imageCurrWeather);
 
 
                 for (int i = 0;i< forecastArrayList.size();i++){

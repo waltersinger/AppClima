@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.wsinger.appclima.utils.TranslationsCode;
 
 //Singleton para tener la clase que hace fetch en toda la aplicacion sin necesidad de instanciar cada vez. Esta clase ya esta inicializada
 //e instanciada y es accesible en toda la aplicacion.
@@ -58,4 +59,7 @@ public class AppController extends Application {
         }
     }
 
+    public TranslationsCode getTrasnlationManager(){
+        return TranslationsCode.getInstance();
+    }
 }

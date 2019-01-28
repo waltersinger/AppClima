@@ -12,6 +12,7 @@ public class Forecast implements Serializable {
     private String currWeatherDescription;
     private String currTemperature;
     private String currDate;
+    private int currCodeCondition;
 
     //under forecast object
     private String forecastDay;
@@ -19,8 +20,23 @@ public class Forecast implements Serializable {
     private String forecastLowTemperature;
     private String forecastHighTemperature;
     private String forecastWeatherDescription;
+    private int forecastCodeWeather;
 
+    public int getCurrCodeCondition() {
+        return currCodeCondition;
+    }
 
+    public void setCurrCodeCondition(int currCodeCondition) {
+        this.currCodeCondition = currCodeCondition;
+    }
+
+    public int getForecastCodeWeather() {
+        return forecastCodeWeather;
+    }
+
+    public void setForecastCodeWeather(int forecastCodeWeather) {
+        this.forecastCodeWeather = forecastCodeWeather;
+    }
 
     public String getCity() {
         return city;
