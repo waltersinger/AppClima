@@ -31,7 +31,6 @@ public class ForecastFragment extends Fragment {
                              Bundle savedInstanceState) {
         View forecastViewF= inflater.inflate(R.layout.fragment_forecast,container,false);
 
-        ImageView forecastIcon = forecastViewF.findViewById(R.id.forecastImageId);
         TextView forecasttvDate = forecastViewF.findViewById(R.id.forecastDateTextv);
         //TextView forecastTemperature = forecastViewF.findViewById(R.id.forecastTempTextv);
         TextView forecastHighTemp = forecastViewF.findViewById(R.id.forecastHighTextv);

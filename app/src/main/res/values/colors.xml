@@ -6,5 +6,5 @@
     <color name="background_viewpager">#e7576197</color>
 
     <color name="color_text_view">#FFF176</color>
-    <color name="color_background_cardview">#c8fff9c4</color>
+    <color name="color_background_cardview">#bdc4e8ff</color>
 </resources>

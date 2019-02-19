@@ -34,4 +34,5 @@ dependencies {
     implementation 'com.dubsmash.volley:library:2.0.1'
     implementation 'net.oauth.core:oauth:20100527'
     implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.flickr4java:flickr4java:2.19'
 }

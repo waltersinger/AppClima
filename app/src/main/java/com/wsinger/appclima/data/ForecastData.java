@@ -33,9 +33,6 @@ public class ForecastData {
     private String urlRight="&format=json&u=c";
 
 
-    //private String url ="https://weather-ydn-yql.media.yahoo.com/forecastrss?location=santiago del estero,ar&format=json&u=c";
-
-
     public void getForecastFromApi(final ForecastAsyncListResponse callback,String strLocation){
         /*
          * JsonObjectRequest takes in five paramaters
@@ -68,6 +65,8 @@ public class ForecastData {
                     //condition
                     JSONObject currentObservation = response.getJSONObject("current_observation");
                     JSONObject condition = currentObservation.getJSONObject("condition");
+                    JSONObject atmosphere = currentObservation.getJSONObject("atmosphere");
+                    JSONObject astronomy =  currentObservation.getJSONObject("astronomy");
 
                     //forecasts object
                     JSONArray forecastArray = response.getJSONArray("forecasts");
@@ -97,6 +96,11 @@ public class ForecastData {
                         Date currdate= new Date( udate * 1000);
                         String today = (String) DateFormat.format("EEEE dd 'de' MMMM 'de' yyyy ",currdate);
                         forecast.setCurrDate(capitalize(today));
+
+                        //humidity,sunset,sunrise
+                        forecast.setCurrHumidity(atmosphere.getInt("humidity"));
+                        forecast.setSunset(astronomy.getString("sunset"));
+                        forecast.setSunrise(astronomy.getString("sunrise"));
 
                         forecastArrayList.add(forecast);
                     }
@@ -150,6 +154,8 @@ public class ForecastData {
               return headers;
           }
         };
+
+
 
         AppController.getInstance().addToRequestQueue(jsonObjectRequest);
     }

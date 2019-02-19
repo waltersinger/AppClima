@@ -1,5 +1,6 @@
 package com.wsinger.appclima;
 
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import com.squareup.picasso.Picasso;
 import com.wsinger.appclima.controller.AppController;
 import com.wsinger.appclima.data.ForecastAsyncListResponse;
+import com.wsinger.appclima.data.ForecastBackgroundImage;
 import com.wsinger.appclima.data.ForecastData;
 import com.wsinger.appclima.data.ForecastFragmentAdapter;
 import com.wsinger.appclima.model.Forecast;
@@ -17,42 +19,53 @@ import com.wsinger.appclima.view.ForecastFragment;
 import java.util.ArrayList;
 import java.util.List;
 import android.support.v4.app.Fragment;
-import android.text.Editable;
-import android.text.method.KeyListener;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     ForecastFragmentAdapter adapterViewPager;
     ViewPager viewPager;
 
-    TextView currentDateText,locationText,currentTempText,currentInformationTextv;
+    TextView currentDateText,locationText,currentTempText,currentInformationTextv,currHumidity,sunsetText,sunriseText;
     EditText currentLocationText;
     String strLocation;
 
     ImageView imageCurrWeather;
+    //ImageView imageViewBackground;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        //imageViewBackground = findViewById(R.id.image_view_background);
         imageCurrWeather = findViewById(R.id.current_image_id);
         currentDateText =findViewById(R.id.currentDateText);
         locationText = findViewById(R.id.locationTextView);
         currentTempText = findViewById(R.id.currentTempTextView);
         currentInformationTextv = findViewById(R.id.current_information_textv);
+        currHumidity = findViewById(R.id.humidity_textview);
+        sunsetText =findViewById(R.id.sunset_textview);
+        sunriseText = findViewById(R.id.sunrise_textview);
+
 
         currentLocationText = findViewById(R.id.input_location_edit);//es el input
 
         final Preferences prefs = new Preferences(this);
         currentLocationText.setText(prefs.getLocation() );
+
+        //--obtengo imagen de fondo de flckr
+        ConstraintLayout layout = findViewById(R.id.background_app);
+
+        //layout.setBackground()
+        new ForecastBackgroundImage(layout,this).execute();
+
 
         getWeather(currentLocationText.getText().toString().trim());
 
@@ -92,7 +105,10 @@ public class MainActivity extends AppCompatActivity {
 
                 currentDateText.setText(forecastArrayList.get(0).getCurrDate());
                 locationText.setText(forecastArrayList.get(0).getCity()+", "+forecastArrayList.get(0).getRegion());
-                currentTempText.setText(forecastArrayList.get(0).getCurrTemperature()+"º C");
+                currentTempText.setText(forecastArrayList.get(0).getCurrTemperature()+"ºC");
+                currHumidity.setText( String.valueOf(forecastArrayList.get(0).getCurrHumidity()));
+                sunsetText.setText(forecastArrayList.get(0).getSunset());
+                sunriseText.setText(forecastArrayList.get(0).getSunrise());
                 //currentInformationTextv.setText(forecastArrayList.get(0).getCurrWeatherDescription());
 
                 currentInformationTextv.setText( translationsCode.getSpanish(forecastArrayList.get(0).getCurrCodeCondition()));

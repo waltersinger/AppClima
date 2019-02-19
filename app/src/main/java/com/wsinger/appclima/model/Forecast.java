@@ -13,6 +13,9 @@ public class Forecast implements Serializable {
     private String currTemperature;
     private String currDate;
     private int currCodeCondition;
+    private int currHumidity;
+    private String sunrise;
+    private String sunset;
 
     //under forecast object
     private String forecastDay;
@@ -21,6 +24,30 @@ public class Forecast implements Serializable {
     private String forecastHighTemperature;
     private String forecastWeatherDescription;
     private int forecastCodeWeather;
+
+    public int getCurrHumidity() {
+        return currHumidity;
+    }
+
+    public void setCurrHumidity(int currHumidity) {
+        this.currHumidity = currHumidity;
+    }
+
+    public String getSunrise() {
+        return sunrise;
+    }
+
+    public void setSunrise(String sunrise) {
+        this.sunrise = sunrise;
+    }
+
+    public String getSunset() {
+        return sunset;
+    }
+
+    public void setSunset(String sunset) {
+        this.sunset = sunset;
+    }
 
     public int getCurrCodeCondition() {
         return currCodeCondition;
