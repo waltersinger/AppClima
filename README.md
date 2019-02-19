@@ -3,7 +3,7 @@ La siguiente aplicacion muestra el clima (temperactura actual, informacion en ge
 La aplicacion se conecta con las APIs de yahoo weather para obtener en un formato JSON los datos del mismo. Utilizo la libreria Volley para hacer las peticiones en un patron singleton.
 
 
-https://github.com/waltersinger/AppClima/blob/master/BUILDING%20THE%20REQUEST%20WITH%20POSTMAN.png
+![alt text](https://github.com/waltersinger/AppClima/blob/master/BUILDING%20THE%20REQUEST%20WITH%20POSTMAN.png)
 
 
 
