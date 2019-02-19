@@ -12,4 +12,7 @@ Utilizo pageviewer para mostrar pronostico extendido y pickasso para traer la im
 
 
 Otra caracteristica es que cada vez que se inicia la app, trae una imagen aleatoria desde el sitio Flickr. La idea es implementar librerias y acceder a las API de varios sitios como yahoo weather y flickr.
+
+![alt text](https://github.com/waltersinger/AppClima/blob/master/working%20weather%20app%20and%20flickr.png)
+
 La app finalizada es se muestra como sigue.
