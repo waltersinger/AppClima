@@ -8,7 +8,7 @@ La aplicacion se conecta con las APIs de yahoo weather para obtener en un format
 
 
 Utilizo pageviewer para mostrar pronostico extendido y pickasso para traer la imagen del clima correspondiente.
-
+![alt text](https://github.com/waltersinger/AppClima/blob/master/WORKING%20ON%20WEATHER%20APP-%20DESIGNING%20MAIN%20SCREEN.png)
 
 
 Otra caracteristica es que cada vez que se inicia la app, trae una imagen aleatoria desde el sitio Flickr. La idea es implementar librerias y acceder a las API de varios sitios como yahoo weather y flickr.
