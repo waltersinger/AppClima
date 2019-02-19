@@ -16,3 +16,13 @@ Otra caracteristica es que cada vez que se inicia la app, trae una imagen aleato
 ![alt text](https://github.com/waltersinger/AppClima/blob/master/working%20weather%20app%20and%20flickr.png)
 
 La app finalizada es se muestra como sigue.
+
+![alt text](https://github.com/waltersinger/AppClima/blob/master/Screenshot_1.png)
+
+Cada vez que se inicia la app cambia de imagen en background
+
+![alt text](https://github.com/waltersinger/AppClima/blob/master/Screenshot_2.png)
+
+![alt text](https://github.com/waltersinger/AppClima/blob/master/Screenshot_3.png)
+
+![alt text](https://github.com/waltersinger/AppClima/blob/master/Screenshot_4.png)
